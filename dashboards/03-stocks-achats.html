@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --ink:#0f2033; --ink2:#3a4b5e; --muted:#76889b;
+    --line:#e5ebf1; --bg:#eef2f7; --card:#ffffff;
+    --navy:#173a5e; --blue:#2f6fb0; --blue2:#5a9bd8;
+    --green:#1f9d6b; --green-s:#e5f6ee; --red:#d64545; --red-s:#fbeaea;
+    --amber:#e0a92e; --amber-s:#fdf4e0;
+  }
+  html,body{ background:var(--bg); }
+  body{ font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); }
+  .dash{ width:1440px; height:900px; padding:34px 40px 26px; background:linear-gradient(180deg,#f4f7fb 0%, #eef2f7 100%); }
+  header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px; }
+  .title h1{ font-size:28px; font-weight:700; letter-spacing:-.3px; color:var(--navy); }
+  .title p{ font-size:14.5px; color:var(--ink2); margin-top:5px; }
+  .brand{ margin-top:11px; display:flex; gap:8px; }
+  .chip{ font-size:11.5px; font-weight:600; color:var(--blue); background:#e9f1fa; border:1px solid #d6e6f5; padding:4px 11px; border-radius:20px; }
+  .period{ text-align:right; }
+  .period .pill{ display:inline-block; font-size:13px; font-weight:700; color:#fff; background:var(--navy); padding:8px 16px; border-radius:8px; letter-spacing:.2px; }
+  .period .sub{ font-size:12px; color:var(--muted); margin-top:8px; }
+  .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:20px; }
+  .kpi{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:0 1px 2px rgba(23,58,94,.04); position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; }
+  .kpi.k1::before{ background:var(--blue); } .kpi.k2::before{ background:var(--green); }
+  .kpi.k3::before{ background:var(--red); } .kpi.k4::before{ background:var(--amber); }
+  .kpi .lab{ font-size:12.5px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+  .kpi .val{ font-size:31px; font-weight:800; margin-top:9px; letter-spacing:-.5px; color:var(--ink); }
+  .kpi .val.neg{ color:var(--red); } .kpi .val.pos{ color:var(--green); }
+  .kpi .delta{ font-size:12.5px; font-weight:600; margin-top:7px; display:inline-flex; align-items:center; gap:5px; }
+  .kpi .delta.up{ color:var(--green); } .kpi .delta.down{ color:var(--red); } .kpi .delta.flat{ color:var(--muted); }
+  .grid{ display:grid; grid-template-columns:1.55fr 1fr; grid-template-rows:auto auto; gap:18px; }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 22px 20px; box-shadow:0 1px 2px rgba(23,58,94,.04); }
+  .card h2{ font-size:15px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+  .card .hint{ font-size:12px; color:var(--muted); margin-bottom:16px; }
+  .chart{ height:196px; display:flex; align-items:flex-end; gap:22px; padding:0 6px; border-bottom:2px solid var(--line); position:relative; }
+  .gridline{ position:absolute; left:0; right:0; border-top:1px dashed #eef2f6; }
+  .tline{ position:absolute; left:0; right:0; border-top:2px dashed #d99; z-index:3; }
+  .tline span{ position:absolute; right:0; top:-16px; font-size:10.5px; font-weight:700; color:var(--red); background:#fff; padding:0 4px; }
+  .barwrap{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; z-index:2; }
+  .bar{ width:60%; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--blue2),var(--blue)); position:relative; }
+  .bar .cap{ position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:12px; font-weight:700; color:var(--navy); white-space:nowrap; }
+  .bar.hl{ background:linear-gradient(180deg,#7fc0a0,var(--green)); }
+  .bar.am{ background:linear-gradient(180deg,#e6b84a,var(--amber)); }
+  .bar.rd{ background:linear-gradient(180deg,#e08b8b,var(--red)); }
+  .xlabels{ display:flex; gap:22px; padding:9px 6px 0; }
+  .xlabels span{ flex:1; text-align:center; font-size:12px; font-weight:600; color:var(--ink2); }
+  table{ width:100%; border-collapse:collapse; }
+  th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); font-weight:700; padding:0 0 10px; border-bottom:1px solid var(--line); }
+  th.r,td.r{ text-align:right; }
+  td{ font-size:13.5px; padding:10px 0; border-bottom:1px solid #f1f5f9; color:var(--ink2); }
+  td.name{ font-weight:600; color:var(--ink); }
+  td.num{ font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .tag{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; }
+  .tag.g{ color:var(--green); background:var(--green-s); } .tag.r{ color:var(--red); background:var(--red-s); } .tag.a{ color:var(--amber); background:var(--amber-s); }
+  tr:last-child td{ border-bottom:none; }
+  .hbar{ margin-bottom:14px; } .hbar:last-child{ margin-bottom:0; }
+  .hbar .top{ display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
+  .hbar .top b{ font-weight:700; color:var(--ink); }
+  .hbar .top span{ color:var(--muted); font-weight:600; }
+  .track{ height:11px; background:#eef2f7; border-radius:8px; overflow:hidden; }
+  .fill{ height:100%; border-radius:8px; }
+  footer{ display:flex; justify-content:space-between; align-items:center; margin-top:16px; font-size:11.5px; color:var(--muted); gap:20px; }
+  footer .note{ font-style:italic; } footer .sig{ white-space:nowrap; } footer .sig b{ color:var(--ink2); }
+</style></head><body>
+<div class="dash">
+  <header>
+    <div class="title"><h1>Pilotage des stocks &amp; des achats</h1><p>Cas réel · 65 références · valorisation, ruptures &amp; analyse des achats</p><div class="brand"><span class="chip">Gestion des stocks</span><span class="chip">Analyse ABC</span><span class="chip">Data analyse</span></div></div>
+    <div class="period"><span class="pill">État au 12/05/2026</span><div class="sub">65 références</div></div>
+  </header>
+  <section class="kpis"><div class="kpi k1"><div class="lab">Valorisation stock</div><div class="val ">784 K</div><div class="delta flat">FCFA au coût d'achat</div></div><div class="kpi k2"><div class="lab">Références actives</div><div class="val pos">65</div><div class="delta flat">au catalogue</div></div><div class="kpi k3"><div class="lab">Ruptures</div><div class="val ">11</div><div class="delta down">réf. à 0 (17 %)</div></div><div class="kpi k4"><div class="lab">Sous seuil</div><div class="val ">20</div><div class="delta flat">< 5 unités (31 %)</div></div></section>
+  <section class="grid"><div class="card"><h2>Achats par catégorie</h2><div class="hint">En milliers de FCFA · total 5,31 M · bières = 71 %</div><div class="chart"><div class="gridline" style="bottom:25%"></div><div class="gridline" style="bottom:50%"></div><div class="gridline" style="bottom:75%"></div><div class="barwrap"><div class="bar hl" style="height:80.0%"><span class="cap">3 793</span></div></div><div class="barwrap"><div class="bar" style="height:12.3%"><span class="cap">583</span></div></div><div class="barwrap"><div class="bar" style="height:10.9%"><span class="cap">517</span></div></div><div class="barwrap"><div class="bar" style="height:5.2%"><span class="cap">246</span></div></div><div class="barwrap"><div class="bar" style="height:3.7%"><span class="cap">174</span></div></div></div><div class="xlabels"><span>Bières</span><span>Jus</span><span>Cocktails</span><span>Vins</span><span>Whisky</span></div></div><div class="card"><h2>Top références en valeur</h2><div class="hint">Stock × coût d'achat unitaire</div><table><tr><th class="">Produit</th><th class="r">Stock</th><th class="r">Valeur</th></tr><tr><td class="name">Regab</td><td class="r">227 u</td><td class="num r">113 500</td></tr><tr><td class="name">Guinness G</td><td class="r">49 u</td><td class="num r">46 942</td></tr><tr><td class="name">Beaufort</td><td class="r">78 u</td><td class="num r">39 780</td></tr><tr><td class="name">Booster gingembre P</td><td class="r">85 u</td><td class="num r">38 250</td></tr><tr><td class="name">Moelleux G</td><td class="r">8 u</td><td class="num r">33 336</td></tr><tr><td class="name">XXL</td><td class="r">84 u</td><td class="num r">32 172</td></tr></table></div><div class="card"><h2>À réapprovisionner en priorité</h2><div class="hint">11 ruptures · 20 références sous le seuil de 5 u.</div><table><tr><th class="">Référence</th><th class="r">Stock</th><th class="r">Statut</th></tr><tr><td class="name">Vino G</td><td class="r">0 u</td><td class="r"><span class="tag r">Rupture</span></td></tr><tr><td class="name">Mutzik</td><td class="r">0 u</td><td class="r"><span class="tag r">Rupture</span></td></tr><tr><td class="name">Regab canette</td><td class="r">0 u</td><td class="r"><span class="tag r">Rupture</span></td></tr><tr><td class="name">Black &amp; White M (75cl)</td><td class="r">0,4 u</td><td class="r"><span class="tag r">Critique</span></td></tr><tr><td class="name">JB M (75cl)</td><td class="r">1 u</td><td class="r"><span class="tag a">Sous seuil</span></td></tr><tr><td class="name">White Horse M (75cl)</td><td class="r">1 u</td><td class="r"><span class="tag a">Sous seuil</span></td></tr></table></div><div class="card"><h2>Indicateurs de stock</h2><div class="hint">Disponibilité &amp; concentration</div><table><tr><th class="">Indicateur</th><th class="r">Valeur</th></tr><tr><td class="name">Valorisation totale</td><td class="num r">784 143 F</td></tr><tr><td class="name">Taux de rupture</td><td class="r"><span class="tag r">17 %</span></td></tr><tr><td class="name">Réf. sous seuil</td><td class="r"><span class="tag a">31 %</span></td></tr><tr><td class="name">Taux de disponibilité</td><td class="r"><span class="tag a">83 %</span></td></tr></table></div></section>
+  <footer><div class="note">Données réelles · état des stocks &amp; achats issu de l'application OptiGestPro. Valorisation au coût d'achat.</div><div class="sig">Réalisé par <b>Gabriel Kenmoe</b> · Contrôle de gestion &amp; Data analyse</div></footer>
+</div></body></html>

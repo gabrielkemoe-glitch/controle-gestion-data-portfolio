@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Données sources (jamais publiées)
+*.csv
+data/
