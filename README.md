@@ -1,54 +1,70 @@
-# Contrôle de gestion & Data analyse — Portfolio
+# Portfolio — Contrôle de gestion & Data analyse
 
-Bonjour, je suis **Gabriel Kenmoe**, contrôleur de gestion et data analyst junior
-(MBA Audit et Contrôle de gestion en cours).
+Je m'appelle **Gabriel Kenmoe**. Je suis en MBA Audit et Contrôle de gestion, et en parallèle je gère un petit
+commerce (un débit de boissons) que je pilote entièrement avec mes propres tableaux de bord.
 
-Ce dépôt rassemble des tableaux de bord que je conçois pour piloter une activité :
-suivi de la performance, des marges, des stocks, du budget et de la conformité sociale.
+Ce dépôt rassemble ces tableaux. Ce ne sont pas des données d'exercice : ce sont **mes chiffres réels**, sur six
+mois d'activité, simplement agrégés et anonymisés. Les noms des vendeurs sont remplacés par Vendeur A à D, et
+aucune donnée individuelle n'est publiée.
 
-Les visuels ci-dessous s'appuient sur des **données opérationnelles réelles** d'un
-commerce que je gère. Elles ont été **anonymisées** : les noms des employés sont
-remplacés par Vendeur A, B, C et D, et seules des valeurs agrégées sont présentées.
+L'objectif est concret : montrer ce que je sais faire, c'est-à-dire partir de données brutes de ventes, d'achats
+et de stock, et en tirer des décisions de gestion.
 
-## Compétences illustrées
+## Voir les tableaux de bord
 
-- Contrôle de gestion : marge brute, structure de coûts, écarts budgétaires, trésorerie
-- Data analyse : nettoyage, agrégation et mise en perspective de données de ventes, d'achats et de stocks
-- Reporting : tableaux de bord clairs, lisibles et orientés décision
-- Outils : Excel, Google Sheets, SQL, HTML et CSS
+Ils sont **interactifs** : on survole les graphiques pour lire les valeurs exactes.
 
-## Tableaux de bord
+**Portfolio en ligne : https://gabrielkemoe-glitch.github.io/controle-gestion-data-portfolio/**
 
-### 1. Analyse d'exploitation et structure de marge
-Chiffre d'affaires, marge brute, poids des postes de charges et repères de gestion.
+### 1. Exploitation et structure de marge
+Où part le chiffre d'affaires et ce qu'il reste vraiment en marge : coût matières, structure des charges, repères de gestion.
+[Version interactive](dashboards/01-exploitation-marge.html)
 
 ![Analyse d'exploitation et structure de marge](dashboards/01-exploitation-marge.png)
 
-### 2. Analyse commerciale et performance des ventes
-Tickets, panier moyen, top produits par marge et concentration des ventes (Pareto).
+### 2. Ventes et performance commerciale
+CA par jour de semaine, part de chaque vendeur, top produits par marge et concentration des ventes (loi de Pareto).
+[Version interactive](dashboards/02-ventes-performance.html)
 
 ![Analyse commerciale et performance des ventes](dashboards/02-ventes-performance.png)
 
-### 3. Pilotage des stocks et des achats
-Valorisation du stock, ruptures, seuils de réapprovisionnement et achats par catégorie.
+### 3. Stocks et achats
+Valorisation du stock, ruptures, seuils de réapprovisionnement et répartition des achats par catégorie.
+[Version interactive](dashboards/03-stocks-achats.html)
 
 ![Pilotage des stocks et des achats](dashboards/03-stocks-achats.png)
 
-### 4. Suivi budgétaire et trésorerie
-Taux de réalisation du budget, analyse des écarts et suivi des décaissements.
+### 4. Budget et trésorerie
+Taux de réalisation du budget mois par mois, analyse d'écarts réel/objectif et suivi des décaissements.
+[Version interactive](dashboards/04-budget-tresorerie.html)
 
 ![Suivi budgétaire et trésorerie](dashboards/04-budget-tresorerie.png)
 
-### 5. Tableau de bord social et conformité RH
-Masse salariale, ratios sociaux et garde-fous du droit du travail (loi n° 022/2021).
+### 5. Social et conformité RH
+Masse salariale, poids sur la marge, ratios sociaux et garde-fous du droit du travail gabonais (loi n° 022/2021).
+[Version interactive](dashboards/05-social-rh.html)
 
 ![Tableau de bord social et conformité RH](dashboards/05-social-rh.png)
 
-## À propos des sources
+## Ce que ces tableaux mettent en avant
 
-Chaque tableau de bord est également disponible en version HTML dans le dossier
-[`dashboards/`](dashboards). Les fichiers sources de données ne sont pas publiés
-afin de préserver la confidentialité de l'activité concernée.
+- **Contrôle de gestion** : marge brute, structure de coûts, analyse d'écarts budgétaires, suivi de trésorerie, ratios de masse salariale.
+- **Data analyse** : nettoyage et agrégation de données réelles (ventes, achats, stocks), analyse ABC et Pareto.
+- **Restitution** : chaque tableau se termine par une lecture analytique « ce que je lis dans ces chiffres », parce qu'un bon reporting explique, il ne se contente pas d'afficher.
+
+## Outils
+
+Excel, Google Sheets et SQL pour le travail sur les données. Les tableaux de bord de ce dépôt sont construits
+en HTML et CSS, avec la librairie Chart.js pour la partie interactive.
+
+## Un tableau de bord Power BI arrive
+
+Je prépare une version Power BI de l'un de ces tableaux de bord. Le lien sera ajouté ici une fois publié.
+
+## À propos des données
+
+Les fichiers sources (ventes, achats, stocks) ne sont pas publiés : ils contiennent des données d'exploitation
+confidentielles. Seules des valeurs agrégées et anonymisées apparaissent dans les tableaux.
 
 ## Me contacter
 

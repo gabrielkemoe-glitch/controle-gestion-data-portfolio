@@ -1,73 +1,146 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suivi budgétaire & trésorerie — Gabriel Kenmoe</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
   :root{
-    --ink:#0f2033; --ink2:#3a4b5e; --muted:#76889b;
-    --line:#e5ebf1; --bg:#eef2f7; --card:#ffffff;
-    --navy:#173a5e; --blue:#2f6fb0; --blue2:#5a9bd8;
-    --green:#1f9d6b; --green-s:#e5f6ee; --red:#d64545; --red-s:#fbeaea;
-    --amber:#e0a92e; --amber-s:#fdf4e0;
+    --ink:#14202b; --ink2:#41525f; --muted:#7a8a97;
+    --line:#e7edf2; --bg:#f5f7f9; --card:#ffffff;
+    --navy:#123b57; --teal:#1f7a6c; --accent:#2f6fb0; --red:#c0453c; --amber:#c98a1e;
   }
-  html,body{ background:var(--bg); }
-  body{ font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); }
-  .dash{ width:1440px; height:900px; padding:34px 40px 26px; background:linear-gradient(180deg,#f4f7fb 0%, #eef2f7 100%); }
-  header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px; }
-  .title h1{ font-size:28px; font-weight:700; letter-spacing:-.3px; color:var(--navy); }
-  .title p{ font-size:14.5px; color:var(--ink2); margin-top:5px; }
-  .brand{ margin-top:11px; display:flex; gap:8px; }
-  .chip{ font-size:11.5px; font-weight:600; color:var(--blue); background:#e9f1fa; border:1px solid #d6e6f5; padding:4px 11px; border-radius:20px; }
-  .period{ text-align:right; }
-  .period .pill{ display:inline-block; font-size:13px; font-weight:700; color:#fff; background:var(--navy); padding:8px 16px; border-radius:8px; letter-spacing:.2px; }
-  .period .sub{ font-size:12px; color:var(--muted); margin-top:8px; }
-  .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:20px; }
-  .kpi{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:0 1px 2px rgba(23,58,94,.04); position:relative; overflow:hidden; }
-  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:5px; }
-  .kpi.k1::before{ background:var(--blue); } .kpi.k2::before{ background:var(--green); }
-  .kpi.k3::before{ background:var(--red); } .kpi.k4::before{ background:var(--amber); }
-  .kpi .lab{ font-size:12.5px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
-  .kpi .val{ font-size:31px; font-weight:800; margin-top:9px; letter-spacing:-.5px; color:var(--ink); }
-  .kpi .val.neg{ color:var(--red); } .kpi .val.pos{ color:var(--green); }
-  .kpi .delta{ font-size:12.5px; font-weight:600; margin-top:7px; display:inline-flex; align-items:center; gap:5px; }
-  .kpi .delta.up{ color:var(--green); } .kpi .delta.down{ color:var(--red); } .kpi .delta.flat{ color:var(--muted); }
-  .grid{ display:grid; grid-template-columns:1.55fr 1fr; grid-template-rows:auto auto; gap:18px; }
-  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 22px 20px; box-shadow:0 1px 2px rgba(23,58,94,.04); }
-  .card h2{ font-size:15px; font-weight:700; color:var(--navy); margin-bottom:3px; }
-  .card .hint{ font-size:12px; color:var(--muted); margin-bottom:16px; }
-  .chart{ height:196px; display:flex; align-items:flex-end; gap:22px; padding:0 6px; border-bottom:2px solid var(--line); position:relative; }
-  .gridline{ position:absolute; left:0; right:0; border-top:1px dashed #eef2f6; }
-  .tline{ position:absolute; left:0; right:0; border-top:2px dashed #d99; z-index:3; }
-  .tline span{ position:absolute; right:0; top:-16px; font-size:10.5px; font-weight:700; color:var(--red); background:#fff; padding:0 4px; }
-  .barwrap{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; z-index:2; }
-  .bar{ width:60%; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--blue2),var(--blue)); position:relative; }
-  .bar .cap{ position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:12px; font-weight:700; color:var(--navy); white-space:nowrap; }
-  .bar.hl{ background:linear-gradient(180deg,#7fc0a0,var(--green)); }
-  .bar.am{ background:linear-gradient(180deg,#e6b84a,var(--amber)); }
-  .bar.rd{ background:linear-gradient(180deg,#e08b8b,var(--red)); }
-  .xlabels{ display:flex; gap:22px; padding:9px 6px 0; }
-  .xlabels span{ flex:1; text-align:center; font-size:12px; font-weight:600; color:var(--ink2); }
-  table{ width:100%; border-collapse:collapse; }
-  th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); font-weight:700; padding:0 0 10px; border-bottom:1px solid var(--line); }
-  th.r,td.r{ text-align:right; }
-  td{ font-size:13.5px; padding:10px 0; border-bottom:1px solid #f1f5f9; color:var(--ink2); }
-  td.name{ font-weight:600; color:var(--ink); }
-  td.num{ font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; }
-  .tag{ font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; }
-  .tag.g{ color:var(--green); background:var(--green-s); } .tag.r{ color:var(--red); background:var(--red-s); } .tag.a{ color:var(--amber); background:var(--amber-s); }
-  tr:last-child td{ border-bottom:none; }
-  .hbar{ margin-bottom:14px; } .hbar:last-child{ margin-bottom:0; }
-  .hbar .top{ display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; }
-  .hbar .top b{ font-weight:700; color:var(--ink); }
-  .hbar .top span{ color:var(--muted); font-weight:600; }
-  .track{ height:11px; background:#eef2f7; border-radius:8px; overflow:hidden; }
-  .fill{ height:100%; border-radius:8px; }
-  footer{ display:flex; justify-content:space-between; align-items:center; margin-top:16px; font-size:11.5px; color:var(--muted); gap:20px; }
-  footer .note{ font-style:italic; } footer .sig{ white-space:nowrap; } footer .sig b{ color:var(--ink2); }
-</style></head><body>
-<div class="dash">
-  <header>
-    <div class="title"><h1>Suivi budgétaire &amp; trésorerie</h1><p>Cas réel · analyse d'écarts réel / objectif &amp; suivi des flux</p><div class="brand"><span class="chip">Contrôle budgétaire</span><span class="chip">Analyse d'écarts</span><span class="chip">Trésorerie</span></div></div>
-    <div class="period"><span class="pill">Déc. 2025 → Mai 2026</span><div class="sub">objectif : 1,5 M FCFA / mois</div></div>
-  </header>
-  <section class="kpis"><div class="kpi k1"><div class="lab">Encaissements</div><div class="val ">6,37 M</div><div class="delta flat">FCFA (chiffre d'affaires)</div></div><div class="kpi k2"><div class="lab">Réalisation budget</div><div class="val pos">106 %</div><div class="delta up">vs objectif CA</div></div><div class="kpi k3"><div class="lab">Solde trésorerie</div><div class="val neg">−17 K</div><div class="delta down">FCFA · réinvesti en stock</div></div><div class="kpi k4"><div class="lab">Décaissements</div><div class="val ">6,39 M</div><div class="delta flat">FCFA (achats + charges)</div></div></section>
-  <section class="grid"><div class="card"><h2>Taux de réalisation du budget CA</h2><div class="hint">Réel / objectif mensuel (1,5 M FCFA) · vert = atteint</div><div class="chart"><div class="gridline" style="bottom:25%"></div><div class="gridline" style="bottom:50%"></div><div class="gridline" style="bottom:75%"></div><div class="tline" style="bottom:72.1%"><span>Objectif 100%</span></div><div class="barwrap"><div class="bar hl" style="height:77.8%"><span class="cap">108 %</span></div></div><div class="barwrap"><div class="bar am" style="height:62.0%"><span class="cap">86 %</span></div></div><div class="barwrap"><div class="bar hl" style="height:80.0%"><span class="cap">111 %</span></div></div><div class="barwrap"><div class="bar am" style="height:62.0%"><span class="cap">86 %</span></div></div><div class="barwrap"><div class="bar am" style="height:22.3%"><span class="cap">31 %</span></div></div></div><div class="xlabels"><span>janv.</span><span>févr.</span><span>mars</span><span>avr.</span><span>mai *</span></div></div><div class="card"><h2>Répartition des décaissements</h2><div class="hint">Sorties de trésorerie · total 6,39 M FCFA</div><div class="hbar"><div class="top"><b>Achats de marchandises</b><span>83 %</span></div><div class="track"><div class="fill" style="width:83%;background:linear-gradient(90deg,#5a9bd8,#2f6fb0)"></div></div></div><div class="hbar"><div class="top"><b>Salaires &amp; personnel</b><span>12 %</span></div><div class="track"><div class="fill" style="width:12%;background:linear-gradient(90deg,#e6b84a,#e0a92e)"></div></div></div><div class="hbar"><div class="top"><b>Autres charges</b><span>5 %</span></div><div class="track"><div class="fill" style="width:5%;background:linear-gradient(90deg,#7fc0a0,#1f9d6b)"></div></div></div></div><div class="card"><h2>Réel vs objectifs par poste</h2><div class="hint">Analyse d'écarts sur la période</div><div class="hbar"><div class="top"><b>Chiffre d'affaires</b><span>Réel 106 % de l'objectif</span></div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#5a9bd8,#2f6fb0)"></div></div></div><div class="hbar"><div class="top"><b>Taux de marge</b><span>Réel 111 % (33,2 % vs 30 %)</span></div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#7fc0a0,#1f9d6b)"></div></div></div><div class="hbar"><div class="top"><b>Masse salariale</b><span>Réel 99 % du plafond</span></div><div class="track"><div class="fill" style="width:99%;background:linear-gradient(90deg,#7fc0a0,#1f9d6b)"></div></div></div><div class="hbar"><div class="top"><b>Achats marchandises</b><span>Réel 106 % · dépassement</span></div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#e6b84a,#e0a92e)"></div></div></div></div><div class="card"><h2>Indicateurs budgétaires</h2><div class="hint">Synthèse du pilotage</div><table><tr><th class="">Indicateur</th><th class="r">Valeur</th></tr><tr><td class="name">Réalisation CA</td><td class="r"><span class="tag g">106 %</span></td></tr><tr><td class="name">Écart de marge</td><td class="r"><span class="tag g">+3,2 pts</span></td></tr><tr><td class="name">Budget salaires</td><td class="r"><span class="tag g">99 %</span></td></tr><tr><td class="name">Dépassement achats</td><td class="r"><span class="tag a">+6 %</span></td></tr></table></div></section>
-  <footer><div class="note">Données réelles ; les objectifs sont des cibles de gestion fixées pour l'analyse d'écarts. Application OptiGestPro.</div><div class="sig">Réalisé par <b>Gabriel Kenmoe</b> · Contrôle de gestion &amp; Data analyse</div></footer>
-</div></body></html>
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  .page{max-width:1060px;margin:0 auto;padding:40px 24px 64px}
+  .kicker{font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--teal)}
+  h1{font-size:30px;line-height:1.2;margin:6px 0 8px;letter-spacing:-.4px;color:var(--navy)}
+  .lede{font-size:16px;color:var(--ink2);max-width:70ch;margin:0}
+  .meta{margin-top:14px;font-size:13px;color:var(--muted)}
+  .meta b{color:var(--ink2);font-weight:600}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:28px 0 8px}
+  .kpi{background:var(--card);padding:18px 20px}
+  .kpi .lab{font-size:12px;color:var(--muted);font-weight:600}
+  .kpi .val{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
+  .kpi .val.neg{color:var(--red)} .kpi .val.pos{color:var(--teal)}
+  .kpi .sub{font-size:12px;color:var(--ink2);margin-top:3px}
+  section.block{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:20px}
+  .block h2{font-size:17px;color:var(--navy);margin:0 0 2px}
+  .block .cap{font-size:13px;color:var(--muted);margin:0 0 16px}
+  .two{display:grid;grid-template-columns:1fr 1.2fr;gap:20px}
+  .chart-box{position:relative;height:280px}
+  .chart-box.sm{height:250px}
+  table.tbl{width:100%;border-collapse:collapse;margin-top:4px}
+  table.tbl th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);font-weight:600;padding:0 0 10px;border-bottom:1px solid var(--line)}
+  table.tbl td{font-size:14px;padding:12px 0;border-bottom:1px solid #f2f5f8;color:var(--ink2)}
+  table.tbl td.name{font-weight:600;color:var(--ink)}
+  table.tbl td.r,table.tbl th.r{text-align:right;font-variant-numeric:tabular-nums}
+  table.tbl tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:20px;background:#eef3f7;color:var(--ink2)}
+  .pill.ok{background:#e6f3ee;color:#1f7a6c}.pill.warn{background:#fbf1e0;color:#b07d1b}
+  .read{background:#fbfcfd;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:8px;padding:18px 22px;margin-top:20px}
+  .read h2{font-size:15px;color:var(--navy);margin:0 0 8px}
+  .read p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+  .read p:last-child{margin-bottom:0}
+  .read strong{color:var(--ink);font-weight:600}
+  footer{margin-top:28px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  footer b{color:var(--ink2);font-weight:600}
+  @media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="kicker">Cas réel · contrôle budgétaire · Gabon</div>
+  <h1>Suivi budgétaire et trésorerie</h1>
+  <p class="lede">Comparer le réel aux objectifs mois par mois, comprendre les écarts, et suivre où sort
+  réellement l'argent. Un budget tenu ne suffit pas si la trésorerie ne suit pas.</p>
+  <p class="meta">Période <b>janv. → mai 2026</b> · objectif <b>1,5 M FCFA / mois</b> · les objectifs sont des
+  cibles de gestion fixées pour l'analyse d'écarts</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="lab">Encaissements</div><div class="val">6,37&nbsp;M</div><div class="sub">FCFA (chiffre d'affaires)</div></div>
+    <div class="kpi"><div class="lab">Réalisation budget</div><div class="val pos">106&nbsp;%</div><div class="sub">vs objectif CA</div></div>
+    <div class="kpi"><div class="lab">Décaissements</div><div class="val">6,39&nbsp;M</div><div class="sub">achats + charges</div></div>
+    <div class="kpi"><div class="lab">Solde trésorerie</div><div class="val neg">−17&nbsp;K</div><div class="sub">FCFA · réinvesti en stock</div></div>
+  </div>
+
+  <section class="block">
+    <h2>Taux de réalisation du budget CA, par mois</h2>
+    <p class="cap">Réel / objectif mensuel. La ligne à 100&nbsp;% est la cible ; au-dessus = objectif atteint.</p>
+    <div class="chart-box"><canvas id="budget"></canvas></div>
+  </section>
+
+  <div class="two">
+    <section class="block">
+      <h2>Où part la trésorerie</h2>
+      <p class="cap">Répartition des décaissements (6,39&nbsp;M FCFA).</p>
+      <div class="chart-box sm"><canvas id="decaiss"></canvas></div>
+    </section>
+    <section class="block">
+      <h2>Réel vs objectif, par poste</h2>
+      <p class="cap">Analyse d'écarts sur la période.</p>
+      <table class="tbl">
+        <tr><th>Poste</th><th class="r">Réel / objectif</th><th class="r">Lecture</th></tr>
+        <tr><td class="name">Chiffre d'affaires</td><td class="r">106 %</td><td class="r"><span class="pill ok">Dépassé</span></td></tr>
+        <tr><td class="name">Taux de marge</td><td class="r">111 %</td><td class="r"><span class="pill ok">33,2 % vs 30 %</span></td></tr>
+        <tr><td class="name">Masse salariale</td><td class="r">99 %</td><td class="r"><span class="pill ok">Sous plafond</span></td></tr>
+        <tr><td class="name">Achats marchandises</td><td class="r">106 %</td><td class="r"><span class="pill warn">Dépassement</span></td></tr>
+      </table>
+    </section>
+  </div>
+
+  <div class="read">
+    <h2>Ce que je lis dans ces chiffres</h2>
+    <p>Sur la période, l'objectif de CA est <strong>dépassé (106 %)</strong> et la marge est <strong>meilleure que
+    la cible</strong> (33,2 % contre 30 % visés). Le pilotage commercial est bon.</p>
+    <p>Pourtant la <strong>trésorerie ressort à −17 K FCFA</strong>, quasi nulle : tout le surplus a été
+    <strong>réinvesti en achats et en stock</strong> (achats à 106 % de la cible, 83 % des décaissements). Ce n'est
+    pas une perte, mais ça tend la trésorerie.</p>
+    <p>Deux mois passent sous l'objectif (févr. et avr. à 86 %). Le vrai point d'attention n'est pas le résultat,
+    c'est le <strong>rythme des décaissements</strong> : mieux étaler les achats lisserait la trésorerie sans toucher à la marge.</p>
+  </div>
+
+  <footer>
+    Réalisé par <b>Gabriel Kenmoe</b> · contrôle de gestion &amp; data analyse.
+    Données réelles ; les objectifs sont des cibles de gestion fixées pour l'analyse d'écarts.
+  </footer>
+</div>
+
+<script>
+const FCFA = v => new Intl.NumberFormat('fr-FR').format(v) + ' FCFA';
+const navy='#123b57', teal='#1f7a6c', accent='#2f6fb0', red='#c0453c', amber='#c98a1e', grid='#eef2f5';
+Chart.defaults.font.family = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+Chart.defaults.color = '#41525f';
+
+const real=[108,86,111,86,31];
+new Chart(document.getElementById('budget'), {
+  data:{ labels:['Janv.','Févr.','Mars','Avr.','Mai *'],
+    datasets:[
+      { type:'bar', label:'Réalisation', data:real,
+        backgroundColor:['#1f7a6c','#c98a1e','#1f7a6c','#c98a1e','#9fb3c2'], borderRadius:6, maxBarThickness:70, order:2 },
+      { type:'line', label:'Objectif', data:[100,100,100,100,100], borderColor:red, borderDash:[6,5],
+        borderWidth:1.5, pointRadius:0, fill:false, order:1 }
+    ] },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{ filter:i=>i.datasetIndex===0,
+        callbacks:{ label:c=>c.raw+' % de l’objectif', title:i=>i[0].label==='Mai *'?'Mai (mois partiel)':i[0].label } } },
+    scales:{ y:{ beginAtZero:true, max:120, grid:{color:grid}, ticks:{ callback:v=>v+' %' } }, x:{ grid:{display:false} } } }
+});
+
+new Chart(document.getElementById('decaiss'), {
+  type:'doughnut',
+  data:{ labels:['Achats de marchandises','Salaires & personnel','Autres charges'],
+    datasets:[{ data:[83,12,5], backgroundColor:[accent,amber,teal], borderWidth:2, borderColor:'#fff' }] },
+  options:{ responsive:true, maintainAspectRatio:false, cutout:'60%',
+    plugins:{ legend:{position:'bottom', labels:{boxWidth:12,padding:12}},
+      tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' %' } } } }
+});
+</script>
+</body>
+</html>
