@@ -57,9 +57,15 @@ Masse salariale, poids sur la marge, ratios sociaux et garde-fous du droit du tr
 Excel, Google Sheets et SQL pour le travail sur les données. Les tableaux de bord de ce dépôt sont construits
 en HTML et CSS, avec la librairie Chart.js pour la partie interactive.
 
-## Un tableau de bord Power BI arrive
+## Tableau de bord interactif en ligne (Looker Studio)
 
-Je prépare une version Power BI de l'un de ces tableaux de bord. Le lien sera ajouté ici une fois publié.
+En complément des tableaux ci-dessus, j'ai réalisé une version interactive et partageable du suivi des ventes avec Looker Studio, consultable en ligne sans connexion :
+
+**[Ouvrir le tableau de bord interactif](https://datastudio.google.com/reporting/9dbfe331-65ca-423f-a191-22230cf2b6cc)**
+
+Il présente les indicateurs clés (chiffre d'affaires, nombre de tickets, panier moyen, taux de réalisation du budget) et permet d'explorer le chiffre d'affaires par mois (avec l'objectif), par jour de la semaine, par vendeur et par produit. Montants en FCFA.
+
+Une version Power BI de ce tableau est également en préparation.
 
 ## À propos des données
 
