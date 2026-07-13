@@ -1,9 +1,9 @@
 # Portfolio — Contrôle de gestion & Data analyse
 
-Je m'appelle **Gabriel Kenmoe**. Je suis en MBA Audit et Contrôle de gestion, et en parallèle je gère un petit
+Je m'appelle **Gabriel Kenmoe**. Je suis en MBA Audit et Contrôle de gestion, et en parallèle je suis assistant de direction d'un petit
 commerce (un débit de boissons) que je pilote entièrement avec mes propres tableaux de bord.
 
-Ce dépôt rassemble ces tableaux. Ce ne sont pas des données d'exercice : ce sont **mes chiffres réels**, sur six
+Ce dépôt rassemble ces tableaux. Ce ne sont pas des données d'exercice : ce sont **mes chiffres réels**, sur cinq
 mois d'activité, simplement agrégés et anonymisés. Les noms des vendeurs sont remplacés par Vendeur A à D, et
 aucune donnée individuelle n'est publiée.
 
