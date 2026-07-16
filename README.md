@@ -1,4 +1,4 @@
-# Portfolio — Contrôle de gestion & Data analyse
+# Portfolio · Contrôle de gestion & Data analyse
 
 Portfolio de **Gabriel Kenmoe**, contrôleur de gestion & data analyst (en MBA Audit et Contrôle de gestion).
 
