@@ -59,14 +59,14 @@
   <h1>Suivi budgétaire et trésorerie</h1>
   <p class="lede">Comparer le réel aux objectifs mois par mois, comprendre les écarts, et suivre où sort
   réellement l'argent. Un budget tenu ne suffit pas si la trésorerie ne suit pas.</p>
-  <p class="meta">Période <b>janv. → mai 2026</b> · objectif <b>1,5 M FCFA / mois</b> · les objectifs sont des
+  <p class="meta">Période <b>janv. → juin 2026</b> · objectif <b>1,5 M FCFA / mois</b> · les objectifs sont des
   cibles de gestion fixées pour l'analyse d'écarts</p>
 
   <div class="kpis">
-    <div class="kpi"><div class="lab">Encaissements</div><div class="val">6,37&nbsp;M</div><div class="sub">FCFA (chiffre d'affaires)</div></div>
-    <div class="kpi"><div class="lab">Réalisation budget</div><div class="val pos">106&nbsp;%</div><div class="sub">vs objectif CA</div></div>
-    <div class="kpi"><div class="lab">Décaissements</div><div class="val">6,39&nbsp;M</div><div class="sub">achats + charges</div></div>
-    <div class="kpi"><div class="lab">Solde trésorerie</div><div class="val neg">−17&nbsp;K</div><div class="sub">FCFA · réinvesti en stock</div></div>
+    <div class="kpi"><div class="lab">Encaissements</div><div class="val">9,89&nbsp;M</div><div class="sub">FCFA (chiffre d'affaires)</div></div>
+    <div class="kpi"><div class="lab">Réalisation budget</div><div class="val pos">110&nbsp;%</div><div class="sub">vs objectif CA</div></div>
+    <div class="kpi"><div class="lab">Décaissements</div><div class="val">9,34&nbsp;M</div><div class="sub">achats + charges</div></div>
+    <div class="kpi"><div class="lab">Solde trésorerie</div><div class="val pos">+553&nbsp;K</div><div class="sub">FCFA · avant var. stock</div></div>
   </div>
 
   <section class="block">
@@ -78,7 +78,7 @@
   <div class="two">
     <section class="block">
       <h2>Où part la trésorerie</h2>
-      <p class="cap">Répartition des décaissements (6,39&nbsp;M FCFA).</p>
+      <p class="cap">Répartition des décaissements (9,34&nbsp;M FCFA).</p>
       <div class="chart-box sm"><canvas id="decaiss"></canvas></div>
     </section>
     <section class="block">
@@ -86,22 +86,22 @@
       <p class="cap">Analyse d'écarts sur la période.</p>
       <table class="tbl">
         <tr><th>Poste</th><th class="r">Réel / objectif</th><th class="r">Lecture</th></tr>
-        <tr><td class="name">Chiffre d'affaires</td><td class="r">106 %</td><td class="r"><span class="pill ok">Dépassé</span></td></tr>
-        <tr><td class="name">Taux de marge</td><td class="r">111 %</td><td class="r"><span class="pill ok">33,2 % vs 30 %</span></td></tr>
-        <tr><td class="name">Masse salariale</td><td class="r">99 %</td><td class="r"><span class="pill ok">Sous plafond</span></td></tr>
-        <tr><td class="name">Achats marchandises</td><td class="r">106 %</td><td class="r"><span class="pill warn">Dépassement</span></td></tr>
+        <tr><td class="name">Chiffre d'affaires</td><td class="r">110 %</td><td class="r"><span class="pill ok">Dépassé</span></td></tr>
+        <tr><td class="name">Taux de marge</td><td class="r">98 %</td><td class="r"><span class="pill warn">29,4 % vs 30 %</span></td></tr>
+        <tr><td class="name">Masse salariale / CA</td><td class="r">7,6 %</td><td class="r"><span class="pill ok">Cible &lt; 10 %</span></td></tr>
+        <tr><td class="name">Achats marchandises</td><td class="r">108 %</td><td class="r"><span class="pill warn">Constitution de stock</span></td></tr>
       </table>
     </section>
   </div>
 
   <div class="read">
-    <h2>Ce que je lis dans ces chiffres</h2>
-    <p>Sur la période, l'objectif de CA est <strong>dépassé (106 %)</strong> et la marge est <strong>meilleure que
-    la cible</strong> (33,2 % contre 30 % visés). Le pilotage commercial est bon.</p>
-    <p>Pourtant la <strong>trésorerie ressort à −17 K FCFA</strong>, quasi nulle : tout le surplus a été
-    <strong>réinvesti en achats et en stock</strong> (achats à 106 % de la cible, 83 % des décaissements). Ce n'est
-    pas une perte, mais ça tend la trésorerie.</p>
-    <p>Deux mois passent sous l'objectif (févr. et avr. à 86 %). Le vrai point d'attention n'est pas le résultat,
+    <h2>Lecture des chiffres</h2>
+    <p>Sur le semestre, l'objectif de CA est <strong>dépassé (110 %)</strong> et la marge est <strong>quasiment sur
+    la cible</strong> (29,4 % contre 30 % visés). Le pilotage commercial est solide.</p>
+    <p>Les encaissements (9,89 M) couvrent les décaissements (9,34 M) : le <strong>solde indicatif ressort positif à
+    +553 K FCFA</strong>. En parallèle, le stock a fortement augmenté (de 226 K à 966 K, soit <strong>+740 K</strong>) :
+    une partie de l'activité a servi à constituer du stock plutôt qu'à dégager de la trésorerie disponible.</p>
+    <p>Deux mois passent sous l'objectif (févr. 87 % et juin 84 %). Le vrai point d'attention n'est pas le résultat,
     c'est le <strong>rythme des décaissements</strong> : mieux étaler les achats lisserait la trésorerie sans toucher à la marge.</p>
   </div>
 
@@ -117,26 +117,26 @@ const navy='#123b57', teal='#1f7a6c', accent='#2f6fb0', red='#c0453c', amber='#c
 Chart.defaults.font.family = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 Chart.defaults.color = '#41525f';
 
-const real=[108,86,111,86,31];
+const real=[119,87,128,141,101,84];
 new Chart(document.getElementById('budget'), {
-  data:{ labels:['Janv.','Févr.','Mars','Avr.','Mai *'],
+  data:{ labels:['Janv.','Févr.','Mars','Avr.','Mai','Juin'],
     datasets:[
       { type:'bar', label:'Réalisation', data:real,
-        backgroundColor:['#1f7a6c','#c98a1e','#1f7a6c','#c98a1e','#9fb3c2'], borderRadius:6, maxBarThickness:70, order:2 },
-      { type:'line', label:'Objectif', data:[100,100,100,100,100], borderColor:red, borderDash:[6,5],
+        backgroundColor:['#1f7a6c','#c98a1e','#1f7a6c','#1f7a6c','#1f7a6c','#c98a1e'], borderRadius:6, maxBarThickness:70, order:2 },
+      { type:'line', label:'Objectif', data:[100,100,100,100,100,100], borderColor:red, borderDash:[6,5],
         borderWidth:1.5, pointRadius:0, fill:false, order:1 }
     ] },
   options:{ responsive:true, maintainAspectRatio:false,
     plugins:{ legend:{display:false},
       tooltip:{ filter:i=>i.datasetIndex===0,
-        callbacks:{ label:c=>c.raw+' % de l’objectif', title:i=>i[0].label==='Mai *'?'Mai (mois partiel)':i[0].label } } },
-    scales:{ y:{ beginAtZero:true, max:120, grid:{color:grid}, ticks:{ callback:v=>v+' %' } }, x:{ grid:{display:false} } } }
+        callbacks:{ label:c=>c.raw+' % de l’objectif' } } },
+    scales:{ y:{ beginAtZero:true, max:150, grid:{color:grid}, ticks:{ callback:v=>v+' %' } }, x:{ grid:{display:false} } } }
 });
 
 new Chart(document.getElementById('decaiss'), {
   type:'doughnut',
   data:{ labels:['Achats de marchandises','Salaires & personnel','Autres charges'],
-    datasets:[{ data:[83,12,5], backgroundColor:[accent,amber,teal], borderWidth:2, borderColor:'#fff' }] },
+    datasets:[{ data:[80,8,12], backgroundColor:[accent,amber,teal], borderWidth:2, borderColor:'#fff' }] },
   options:{ responsive:true, maintainAspectRatio:false, cutout:'60%',
     plugins:{ legend:{position:'bottom', labels:{boxWidth:12,padding:12}},
       tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' %' } } } }

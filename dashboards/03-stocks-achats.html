@@ -58,56 +58,56 @@
   <h1>Pilotage des stocks et des achats</h1>
   <p class="lede">Ce qui dort en stock, ce qui manque, et où part l'argent des achats : un état des lieux
   pour éviter à la fois les ruptures qui font perdre des ventes et le sur-stock qui immobilise la trésorerie.</p>
-  <p class="meta">État au <b>12/05/2026</b> · <b>65</b> références · valorisation au coût d'achat · données réelles</p>
+  <p class="meta">État au <b>30/06/2026</b> · <b>73</b> références · valorisation au coût d'achat · données réelles</p>
 
   <div class="kpis">
-    <div class="kpi"><div class="lab">Valorisation du stock</div><div class="val">784&nbsp;K</div><div class="sub">FCFA au coût d'achat</div></div>
-    <div class="kpi"><div class="lab">Références actives</div><div class="val">65</div><div class="sub">au catalogue</div></div>
-    <div class="kpi"><div class="lab">Ruptures</div><div class="val">11</div><div class="sub">références à 0 (17 %)</div></div>
-    <div class="kpi"><div class="lab">Sous seuil</div><div class="val">20</div><div class="sub">&lt; 5 unités (31 %)</div></div>
+    <div class="kpi"><div class="lab">Valorisation du stock</div><div class="val">966&nbsp;K</div><div class="sub">FCFA au coût d'achat</div></div>
+    <div class="kpi"><div class="lab">Références actives</div><div class="val">73</div><div class="sub">au catalogue</div></div>
+    <div class="kpi"><div class="lab">Ruptures</div><div class="val">21</div><div class="sub">références à 0 (29 %)</div></div>
+    <div class="kpi"><div class="lab">Sous seuil</div><div class="val">10</div><div class="sub">&lt; 5 unités (14 %)</div></div>
   </div>
 
   <section class="block">
     <h2>Achats par catégorie</h2>
-    <p class="cap">Total 5,31&nbsp;M FCFA sur la période. Les bières concentrent 71&nbsp;% des achats.</p>
+    <p class="cap">Total 7,50&nbsp;M FCFA sur le semestre. Les bières concentrent 72&nbsp;% des achats.</p>
     <div class="chart-box"><canvas id="achats"></canvas></div>
   </section>
 
   <div class="two">
     <section class="block">
       <h2>État du stock</h2>
-      <p class="cap">Répartition des 65 références par disponibilité.</p>
+      <p class="cap">Répartition des 73 références par disponibilité.</p>
       <div class="chart-box sm"><canvas id="statut"></canvas></div>
     </section>
     <section class="block">
       <h2>À réapprovisionner en priorité</h2>
-      <p class="cap">11 ruptures et 20 références sous le seuil de 5 unités.</p>
+      <p class="cap">21 ruptures et 10 références sous le seuil de 5 unités.</p>
       <table class="tbl">
         <tr><th>Référence</th><th class="r">Stock</th><th class="r">Statut</th></tr>
-        <tr><td class="name">Vino G</td><td class="r">0 u</td><td class="r"><span class="pill bad">Rupture</span></td></tr>
         <tr><td class="name">Mutzik</td><td class="r">0 u</td><td class="r"><span class="pill bad">Rupture</span></td></tr>
-        <tr><td class="name">Regab canette</td><td class="r">0 u</td><td class="r"><span class="pill bad">Rupture</span></td></tr>
-        <tr><td class="name">Black &amp; White M (75cl)</td><td class="r">0,4 u</td><td class="r"><span class="pill bad">Critique</span></td></tr>
-        <tr><td class="name">JB M (75cl)</td><td class="r">1 u</td><td class="r"><span class="pill warn">Sous seuil</span></td></tr>
-        <tr><td class="name">White Horse M (75cl)</td><td class="r">1 u</td><td class="r"><span class="pill warn">Sous seuil</span></td></tr>
+        <tr><td class="name">Chill G</td><td class="r">0 u</td><td class="r"><span class="pill bad">Rupture</span></td></tr>
+        <tr><td class="name">XXL canette</td><td class="r">0 u</td><td class="r"><span class="pill bad">Rupture</span></td></tr>
+        <tr><td class="name">Chenet blanc P</td><td class="r">1 u</td><td class="r"><span class="pill bad">Critique</span></td></tr>
+        <tr><td class="name">Merlot G</td><td class="r">1 u</td><td class="r"><span class="pill warn">Sous seuil</span></td></tr>
+        <tr><td class="name">33 Export P</td><td class="r">3 u</td><td class="r"><span class="pill warn">Sous seuil</span></td></tr>
       </table>
     </section>
   </div>
 
   <div class="read">
-    <h2>Ce que je lis dans ces chiffres</h2>
-    <p>Les achats sont <strong>très concentrés sur les bières (71 %)</strong>. C'est cohérent avec l'activité, mais
+    <h2>Lecture des chiffres</h2>
+    <p>Les achats sont <strong>très concentrés sur les bières (72 %)</strong>. C'est cohérent avec l'activité, mais
     ça crée une dépendance forte à quelques fournisseurs : c'est là que se négocient les meilleures conditions.</p>
-    <p><strong>17 % des références sont en rupture</strong> et 31 % sous le seuil. Chaque rupture sur un produit
-    d'appel (Regab canette, Mutzik) est une vente perdue sèche. Un simple seuil de réassort à 5 unités réglerait
+    <p><strong>29 % des références sont en rupture</strong> et 14 % sous le seuil. Chaque rupture sur un produit
+    d'appel (Mutzik, XXL canette) est une vente perdue sèche. Un simple seuil de réassort à 5 unités réglerait
     l'essentiel.</p>
-    <p>À l'inverse, le <strong>Regab immobilise le plus de valeur en stock</strong> (227 unités). L'enjeu est
+    <p>À l'inverse, le <strong>Regab immobilise le plus de valeur en stock</strong> (374 unités, 187 K FCFA). L'enjeu est
     d'équilibrer : ne pas être en rupture sur les rotations rapides, sans sur-stocker et bloquer la trésorerie.</p>
   </div>
 
   <footer>
     Réalisé par <b>Gabriel Kenmoe</b> · contrôle de gestion &amp; data analyse.
-    État réel des stocks et des achats d'un établissement dont je suis l'assistant de direction, valorisation au coût d'achat.
+    État réel des stocks et des achats d'un débit de boissons (Gabon) dont il assure le suivi de gestion, valorisation au coût d'achat.
   </footer>
 </div>
 
@@ -119,22 +119,22 @@ Chart.defaults.color = '#41525f';
 
 new Chart(document.getElementById('achats'), {
   type:'bar',
-  data:{ labels:['Bières','Jus','Cocktails','Vins','Whisky'],
-    datasets:[{ data:[3793000,583000,517000,246000,174000],
+  data:{ labels:['Bières','Cocktails','Jus','Vins','Whisky'],
+    datasets:[{ data:[5399306,796378,727960,325803,252008],
       backgroundColor:[teal,accent,accent,accent,accent], borderRadius:6, maxBarThickness:78 }] },
   options:{ responsive:true, maintainAspectRatio:false,
     plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>FCFA(c.raw) } } },
     scales:{ y:{ beginAtZero:true, grid:{color:grid}, ticks:{ callback:v=>(v/1000000)+' M' } }, x:{ grid:{display:false} } } }
 });
 
-const statutN=[45,9,11];
+const statutN=[42,10,21];
 new Chart(document.getElementById('statut'), {
   type:'doughnut',
   data:{ labels:['Disponibles','Sous seuil (1–4 u)','Rupture (0 u)'],
     datasets:[{ data:statutN, backgroundColor:[teal,amber,red], borderWidth:2, borderColor:'#fff' }] },
   options:{ responsive:true, maintainAspectRatio:false, cutout:'60%',
     plugins:{ legend:{position:'bottom', labels:{boxWidth:12,padding:12}},
-      tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' réf. ('+Math.round(c.raw/65*100)+' %)' } } } }
+      tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' réf. ('+Math.round(c.raw/73*100)+' %)' } } } }
 });
 </script>
 </body>

@@ -1,14 +1,13 @@
 # Portfolio — Contrôle de gestion & Data analyse
 
-Je m'appelle **Gabriel Kenmoe**. Je suis en MBA Audit et Contrôle de gestion, et en parallèle je suis assistant de direction d'un petit
-commerce (un débit de boissons) que je pilote entièrement avec mes propres tableaux de bord.
+Portfolio de **Gabriel Kenmoe**, contrôleur de gestion & data analyst (en MBA Audit et Contrôle de gestion).
 
-Ce dépôt rassemble ces tableaux. Ce ne sont pas des données d'exercice : ce sont **mes chiffres réels**, sur cinq
-mois d'activité, simplement agrégés et anonymisés. Les noms des vendeurs sont remplacés par Vendeur A à D, et
+Ce dépôt rassemble cinq tableaux de bord construits à partir de **données réelles** d'un débit de boissons (Gabon) dont il assure le
+suivi de gestion : ventes, achats, stocks, budget et masse salariale, sur le premier semestre 2026 (janvier à juin). Ce ne sont pas des
+données d'exercice ; elles sont simplement agrégées et anonymisées. Les noms des vendeurs sont remplacés par Vendeur A à D, et
 aucune donnée individuelle n'est publiée.
 
-L'objectif est concret : montrer ce que je sais faire, c'est-à-dire partir de données brutes de ventes, d'achats
-et de stock, et en tirer des décisions de gestion.
+L'objectif est concret : partir de données brutes de ventes, d'achats et de stock, et en tirer des décisions de gestion.
 
 ## Voir les tableaux de bord
 
@@ -50,7 +49,7 @@ Masse salariale, poids sur la marge, ratios sociaux et garde-fous du droit du tr
 
 - **Contrôle de gestion** : marge brute, structure de coûts, analyse d'écarts budgétaires, suivi de trésorerie, ratios de masse salariale.
 - **Data analyse** : nettoyage et agrégation de données réelles (ventes, achats, stocks), analyse ABC et Pareto.
-- **Restitution** : chaque tableau se termine par une lecture analytique « ce que je lis dans ces chiffres », parce qu'un bon reporting explique, il ne se contente pas d'afficher.
+- **Restitution** : chaque tableau se termine par une lecture analytique (« Lecture des chiffres »), parce qu'un bon reporting explique, il ne se contente pas d'afficher.
 
 ## Outils
 
@@ -59,7 +58,7 @@ en HTML et CSS, avec la librairie Chart.js pour la partie interactive.
 
 ## Tableau de bord interactif en ligne (Looker Studio)
 
-En complément des tableaux ci-dessus, j'ai réalisé une version interactive et partageable du suivi des ventes avec Looker Studio, consultable en ligne sans connexion :
+En complément des tableaux ci-dessus, une version interactive et partageable du suivi des ventes a été réalisée avec Looker Studio, consultable en ligne sans connexion :
 
 **[Ouvrir le tableau de bord interactif](https://datastudio.google.com/reporting/9dbfe331-65ca-423f-a191-22230cf2b6cc)**
 
@@ -72,6 +71,6 @@ Une version Power BI de ce tableau est également en préparation.
 Les fichiers sources (ventes, achats, stocks) ne sont pas publiés : ils contiennent des données d'exploitation
 confidentielles. Seules des valeurs agrégées et anonymisées apparaissent dans les tableaux.
 
-## Me contacter
+## Contact
 
 - Malt : https://www.malt.fr/profile/gabrielkenmoe

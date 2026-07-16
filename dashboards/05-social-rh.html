@@ -62,15 +62,15 @@
 
   <div class="kpis">
     <div class="kpi"><div class="lab">Effectif suivi</div><div class="val">4</div><div class="sub">salariés (anonymisés)</div></div>
-    <div class="kpi"><div class="lab">Masse salariale</div><div class="val">788&nbsp;K</div><div class="sub">FCFA sur la période</div></div>
-    <div class="kpi"><div class="lab">Coût moyen</div><div class="val">197&nbsp;K</div><div class="sub">FCFA / salarié</div></div>
-    <div class="kpi"><div class="lab">MS / marge brute</div><div class="val">37&nbsp;%</div><div class="sub">12,4 % du CA</div></div>
+    <div class="kpi"><div class="lab">Masse salariale</div><div class="val">754&nbsp;K</div><div class="sub">FCFA sur la période</div></div>
+    <div class="kpi"><div class="lab">Coût moyen</div><div class="val">189&nbsp;K</div><div class="sub">FCFA / salarié</div></div>
+    <div class="kpi"><div class="lab">MS / marge brute</div><div class="val">25,9&nbsp;%</div><div class="sub">7,6 % du CA</div></div>
   </div>
 
   <div class="two">
     <section class="block">
       <h2>Activité par salarié</h2>
-      <p class="cap">Tickets traités sur la période. Salariés anonymisés (A–D).</p>
+      <p class="cap">Unités vendues sur la période. Salariés anonymisés (A–D).</p>
       <div class="chart-box"><canvas id="activite"></canvas></div>
     </section>
     <section class="block">
@@ -82,7 +82,7 @@
 
   <section class="block">
     <h2>Points de contrôle · droit du travail gabonais</h2>
-    <p class="cap">Règles que je vérifie sur chaque contrat (loi n° 022/2021 portant Code du travail).</p>
+    <p class="cap">Règles vérifiées sur chaque contrat (loi n° 022/2021 portant Code du travail).</p>
     <table class="tbl">
       <tr><th>Règle contrôlée</th><th class="r">Repère légal</th><th class="r">Statut</th></tr>
       <tr><td class="name">Durée hebdomadaire</td><td class="r">≤ 48 h</td><td class="r"><span class="pill ok">Conforme</span></td></tr>
@@ -94,11 +94,11 @@
   </section>
 
   <div class="read">
-    <h2>Ce que je lis dans ces chiffres</h2>
-    <p>La masse salariale ne pèse que <strong>12,4 % du chiffre d'affaires</strong> — maîtrisée. Mais rapportée à
-    la marge brute, elle en absorbe <strong>37 %</strong> : c'est le vrai poids à surveiller, car c'est sur la marge,
+    <h2>Lecture des chiffres</h2>
+    <p>La masse salariale ne pèse que <strong>7,6 % du chiffre d'affaires</strong> — maîtrisée. Mais rapportée à
+    la marge brute, elle en absorbe <strong>25,9 %</strong> : c'est le vrai poids à surveiller, car c'est sur la marge,
     pas sur le CA, que se joue le résultat.</p>
-    <p>L'activité est <strong>très concentrée sur un salarié</strong> (4 219 tickets sur ~5 600). Utile au quotidien,
+    <p>L'activité est <strong>très concentrée sur un salarié</strong> (8 106 unités vendues sur 11 081, soit 73 %). Utile au quotidien,
     mais c'est un <strong>risque social et opérationnel</strong> : un départ ou un arrêt déstabilise l'activité.
     Formaliser et répartir un peu la charge sécuriserait le commerce.</p>
     <p>Côté conformité, chaque contrat passe par <strong>5 garde-fous légaux</strong> (durée du travail, cadre du CDD,
@@ -119,17 +119,17 @@ Chart.defaults.color = '#41525f';
 new Chart(document.getElementById('activite'), {
   type:'bar',
   data:{ labels:['Vendeur A','Vendeur B','Vendeur C','Vendeur D'],
-    datasets:[{ data:[4219,865,335,176], backgroundColor:[teal,accent,accent,accent], borderRadius:6, maxBarThickness:66 }] },
+    datasets:[{ data:[8106,1834,571,570], backgroundColor:[teal,accent,accent,accent], borderRadius:6, maxBarThickness:66 }] },
   options:{ responsive:true, maintainAspectRatio:false,
     plugins:{ legend:{display:false},
-      tooltip:{ callbacks:{ label:c=>new Intl.NumberFormat('fr-FR').format(c.raw)+' tickets' } } },
+      tooltip:{ callbacks:{ label:c=>new Intl.NumberFormat('fr-FR').format(c.raw)+' unités' } } },
     scales:{ y:{ beginAtZero:true, grid:{color:grid} }, x:{ grid:{display:false} } } }
 });
 
 new Chart(document.getElementById('poids'), {
   type:'doughnut',
   data:{ labels:['Masse salariale','Reste de la marge'],
-    datasets:[{ data:[37,63], backgroundColor:[amber,teal], borderWidth:2, borderColor:'#fff' }] },
+    datasets:[{ data:[25.9,74.1], backgroundColor:[amber,teal], borderWidth:2, borderColor:'#fff' }] },
   options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins:{ legend:{position:'bottom', labels:{boxWidth:12,padding:14}},
       tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' % de la marge brute' } } } }
