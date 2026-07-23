@@ -62,9 +62,9 @@
 
   <div class="kpis">
     <div class="kpi"><div class="lab">Effectif suivi</div><div class="val">4</div><div class="sub">salariés (anonymisés)</div></div>
-    <div class="kpi"><div class="lab">Masse salariale</div><div class="val">754&nbsp;K</div><div class="sub">FCFA sur la période</div></div>
-    <div class="kpi"><div class="lab">Coût moyen</div><div class="val">189&nbsp;K</div><div class="sub">FCFA / salarié</div></div>
-    <div class="kpi"><div class="lab">MS / marge brute</div><div class="val">25,9&nbsp;%</div><div class="sub">7,6 % du CA</div></div>
+    <div class="kpi"><div class="lab">Masse salariale</div><div class="val">852&nbsp;K</div><div class="sub">FCFA sur la période</div></div>
+    <div class="kpi"><div class="lab">Coût moyen</div><div class="val">213&nbsp;K</div><div class="sub">FCFA / salarié</div></div>
+    <div class="kpi"><div class="lab">MS / marge brute</div><div class="val">29,3&nbsp;%</div><div class="sub">8,6 % du CA</div></div>
   </div>
 
   <div class="two">
@@ -95,8 +95,8 @@
 
   <div class="read">
     <h2>Lecture des chiffres</h2>
-    <p>La masse salariale ne pèse que <strong>7,6 % du chiffre d'affaires</strong>, un poids maîtrisé. Mais rapportée à
-    la marge brute, elle en absorbe <strong>25,9 %</strong> : c'est le vrai poids à surveiller, car c'est sur la marge,
+    <p>La masse salariale ne pèse que <strong>8,6 % du chiffre d'affaires</strong>, un poids maîtrisé. Mais rapportée à
+    la marge brute, elle en absorbe <strong>29,3 %</strong> : c'est le vrai poids à surveiller, car c'est sur la marge,
     pas sur le CA, que se joue le résultat.</p>
     <p>L'activité est <strong>très concentrée sur un salarié</strong> (8 106 unités vendues sur 11 081, soit 73 %). Utile au quotidien,
     mais c'est un <strong>risque social et opérationnel</strong> : un départ ou un arrêt déstabilise l'activité.
@@ -129,7 +129,7 @@ new Chart(document.getElementById('activite'), {
 new Chart(document.getElementById('poids'), {
   type:'doughnut',
   data:{ labels:['Masse salariale','Reste de la marge'],
-    datasets:[{ data:[25.9,74.1], backgroundColor:[amber,teal], borderWidth:2, borderColor:'#fff' }] },
+    datasets:[{ data:[29.3,70.7], backgroundColor:[amber,teal], borderWidth:2, borderColor:'#fff' }] },
   options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
     plugins:{ legend:{position:'bottom', labels:{boxWidth:12,padding:14}},
       tooltip:{ callbacks:{ label:c=>c.label+' : '+c.raw+' % de la marge brute' } } } }
