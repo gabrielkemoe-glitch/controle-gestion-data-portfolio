@@ -45,6 +45,22 @@ Masse salariale, poids sur la marge, ratios sociaux et garde-fous du droit du tr
 
 ![Tableau de bord social et conformité RH](dashboards/05-social-rh.png)
 
+## Autres projets
+
+### 6. Budget prévisionnel d'une association
+Classeur Excel du budget 2026 d'une association jeunesse 100 % bénévole : 3 scénarios (faible, moyen, fort) pilotés
+par des paramètres d'activité, budgets opérationnels mensuels, budget de trésorerie et clés de répartition. Mission
+réalisée en tant que bénévole finance ; le nom de l'association, des partenaires et des lieux est anonymisé.
+[Ouvrir le classeur Excel](https://docs.google.com/spreadsheets/d/1CBfg_ygW3pTTrPHZ74z-2_d09zY9nLx2/edit?usp=sharing)
+
+![Budget prévisionnel d'une association jeunesse](projets/budget-previsionnel-association-2026.png)
+
+### 7. Mémoire professionnel : optimiser la performance globale en grande distribution
+Mémoire de fin de Bachelor 3 Management et gestion des PME (2024-2025), à partir d'un stage chez Carrefour Lescar :
+analyse du secteur (PESTEL, concurrence, SWOT), rentabilité de l'unité commerciale et pistes d'amélioration de la
+performance globale.
+[Lire le mémoire (PDF)](https://drive.google.com/file/d/1saCJm_fdJr4-mOnpMCh7Hgg5Pl32MbC5/view?usp=sharing)
+
 ## Ce que ces tableaux mettent en avant
 
 - **Contrôle de gestion** : marge brute, structure de coûts, analyse d'écarts budgétaires, suivi de trésorerie, ratios de masse salariale.
